@@ -617,7 +617,16 @@ After compilation: *.o file
         .
     }
 
+#### Constructors and destructors. 
+Within **.text** it is place a section for constructors and destructors. This is specically for C++.
 
+Cosntructors:
+
+    *(.ctors)
+
+Destructors:
+
+    *(.dtors)
 
 #### Linker Script for stm32f401 microcontroller: stm32f401.ld
 
@@ -679,6 +688,8 @@ After compilation: *.o file
             _stext = .; /* '.' indicates contains the current output location counter and it is asigned to global symbol: _stext (start of text section) symbol. */
             *(.isr_vector_table) /* Merge all '.isr_vector_table' sections of input files. */
             *(.text)             /* Merge all '.text' sections of inputs files. */
+            *(.ctors)            /* Merge all '.ctors' constructor input files */
+            *(.dtors)            /* Merge all '.dtors' destructor input files */
             *(.rodata)           /* Merge all '.rodata' sections of inputs files. */
             . = ALIGN(4);
             _etext = .; /* '.' indicates contains the current output location counter and it is asigned to global symbol: _etext (end of text section) symbol. */

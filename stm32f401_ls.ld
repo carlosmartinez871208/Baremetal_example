@@ -60,6 +60,8 @@ SECTIONS
         _stext = .; /* '.' indicates contains the current output location counter and it is asigned to global symbol: _stext (start of text section) symbol. */
         *(.isr_vector_table) /* Merge all '.isr_vector_table' sections of input files. */
         *(.text)             /* Merge all '.text' sections of inputs files. */
+        *(.ctors)            /* Merge all '.ctors' constructor input files */
+        *(.dtors)            /* Merge all '.ctors' constructor input files */
         *(.rodata)           /* Merge all '.rodata' sections of inputs files. */
         . = ALIGN(4); /* This align memoery every 4 bytes  */
         _etext = .; /* '.' indicates contains the current output location counter and it is asigned to global symbol: _etext (end of text section) symbol. */
